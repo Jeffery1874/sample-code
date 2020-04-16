@@ -10,12 +10,13 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
+
 class SimpleAndroidTests(unittest.TestCase):
     def setUp(self):
         desired_caps = {}
         desired_caps['platformName'] = 'Android'
-        desired_caps['platformVersion'] = '4.2'
-        desired_caps['deviceName'] = 'Android Emulator'
+        desired_caps['platformVersion'] = '10'
+        desired_caps['deviceName'] = 'emulator-5554'
         desired_caps['app'] = PATH(
             '../../../sample-code/apps/ApiDemos/bin/ApiDemos-debug.apk'
         )
@@ -41,7 +42,6 @@ class SimpleAndroidTests(unittest.TestCase):
         self.assertGreaterEqual(12, len(els))
 
         self.driver.find_element_by_android_uiautomator('text("API Demos")')
-
 
     def test_simple_actions(self):
         el = self.driver.find_element_by_accessibility_id('Graphics')
